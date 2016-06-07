@@ -27,13 +27,13 @@ bil@lambdacs.com -- I enjoy hearing your feedback.
 Also please visit the website at: 
 
 http://omniscientdebugger.github.io/
-
+==========
 #System Requirements
 
 ODB 1.4 works on code complied for JDK 1.3 and 1.4. ODB 1.5 works on code compiled for JDK 1.5. 
 I have not tested it on 1.6. If you have, please let me know.
 
-=== Usage ===
+#Usage
 
 If you normally run your program on UNIX like this:
 
