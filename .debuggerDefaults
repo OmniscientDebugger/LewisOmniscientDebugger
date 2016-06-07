@@ -1,4 +1,4 @@
-# ODB Defaults 5.Mar.07 -- You may edit by hand. See Manual for details
+# ODB Defaults 28.Mar.07 -- You may edit by hand. See Manual for details
 
 #                        Class & method names must be complete. '*' must be freestanding.
 # DidntInstrument:       This is informative only. (You may change to InstrumentOnly.)
@@ -18,7 +18,7 @@
 MaxTimeStamps:		2000500
 StartPattern:		
 StopPattern:		
-SourceDirectory:	
+SourceDirectory:	"./src/main/java/"
 OnlyInstrument:		
 DidntInstrument:	
 DontInstrumentMethod:	
