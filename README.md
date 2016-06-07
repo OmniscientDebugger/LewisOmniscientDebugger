@@ -1,6 +1,16 @@
 Thank you for downloading the Omniscient Debugger (the ODB), the Java debugger that lets you go
 "backwards in time" so you can examine your program's execution.
 
+=== Maven/Gradle ===
+
+<dependency>
+  <groupId>com.neuronrobotics</groupId>
+  <artifactId>LewisOmniscientDebugger</artifactId>
+  <version>1.6</version>
+</dependency>
+
+compile group: 'com.neuronrobotics', name: 'LewisOmniscientDebugger', version: '1.6'
+
 === Contact Info / Website ===
 
 There are no ODB mailing lists. For support, patches / other
