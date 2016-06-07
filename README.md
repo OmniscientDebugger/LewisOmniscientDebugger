@@ -4,14 +4,18 @@ Thank you for downloading the Omniscient Debugger (the ODB), the Java debugger t
 
 ==========
 #Maven/Gradle
-
+##Maven
+```
 <dependency>
   <groupId>com.neuronrobotics</groupId>
   <artifactId>LewisOmniscientDebugger</artifactId>
   <version>1.6</version>
 </dependency>
-
+```
+##Gradle
+```
 compile group: 'com.neuronrobotics', name: 'LewisOmniscientDebugger', version: '1.6'
+```
 ==========
 
 #Contact Info / Website
