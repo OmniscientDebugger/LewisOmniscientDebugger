@@ -70,7 +70,7 @@ one, please email me.
 
 #Manual
 
-See docs/ODBUserManual.html. Enjoy!
+See http://omniscientdebugger.github.io/ODBUserManual.html Enjoy!
 
 
 
