@@ -293,9 +293,7 @@ public class MyCollections {
      * Reverses the order of the elements in the specified list.<p>
      *
      * This method runs in linear time.
-     * @param l incoming list
-     *
-     * @param  list the list whose elements are to be reversed.
+     * @param  l the list whose elements are to be reversed.
      * @throws UnsupportedOperationException if the specified list's
      *	       list-iterator does not support the <tt>set</tt> operation.
      */
@@ -354,8 +352,7 @@ public class MyCollections {
      * quadratic time for a "sequential access" list.
      *
      * @param  list the list to be shuffled.
-     * @param rnd random number
-     * @param  r the source of randomness to use to shuffle the list.
+     * @param rnd the source of randomness to use to shuffle the list.
      * @throws UnsupportedOperationException if the specified list's
      *         list-iterator does not support the <tt>set</tt> operation.
      */

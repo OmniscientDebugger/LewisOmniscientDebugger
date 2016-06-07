@@ -94,9 +94,9 @@ public final class VectorD extends Vector {
     protected Object elementData[];
 
     /**
-     * The number of valid components in this <tt>VectorD</tt> object. 
-     * Components <tt>elementData[0]</tt> through 
-     * <tt>elementData[elementCount-1]</tt> are the actual items.
+     * The number of valid components in this VectorD object. 
+     * Components elementData[0] through 
+     * elementData[elementCount-1] are the actual items.
      *
      * @serial
      */
@@ -148,7 +148,7 @@ public final class VectorD extends Vector {
 
     /**
      * Constructs an empty vector so that its internal data array 
-     * has size <tt>10</tt> and its standard capacity increment is 
+     * has size 10 and its standard capacity increment is 
      * zero. 
      */
     public VectorD() {
@@ -172,10 +172,10 @@ public final class VectorD extends Vector {
 
     /**
      * Copies the components of this vector into the specified array. The 
-     * item at index <tt>k</tt> in this vector is copied into component 
-     * <tt>k</tt> of <tt>anArray</tt>. The array must be big enough to hold 
+     * item at index k in this vector is copied into component 
+     * k of anArray. The array must be big enough to hold 
      * all the objects in this vector, else an 
-     * <tt>IndexOutOfBoundsException</tt> is thrown.
+     * IndexOutOfBoundsException is thrown.
      *
      * @param   anArray   the array into which the components get copied.
      */
@@ -187,7 +187,7 @@ public final class VectorD extends Vector {
      * Trims the capacity of this vector to be the vector's current 
      * size. If the capacity of this cector is larger than its current 
      * size, then the capacity is changed to equal the size by replacing 
-     * its internal data array, kept in the field <tt>elementData</tt>, 
+     * its internal data array, kept in the field elementData, 
      * with a smaller one. An application can use this operation to 
      * minimize the storage of a vector. 
      */
@@ -207,14 +207,14 @@ public final class VectorD extends Vector {
      * the minimum capacity argument.
      *
      * <p>If the current capacity of this vector is less than
-     * <tt>minCapacity</tt>, then its capacity is increased by replacing its
-     * internal data array, kept in the field <tt>elementData</tt>, with a
+     * minCapacity, then its capacity is increased by replacing its
+     * internal data array, kept in the field elementData, with a
      * larger one.  The size of the new data array will be the old size plus
-     * <tt>capacityIncrement</tt>, unless the value of
-     * <tt>capacityIncrement</tt> is less than or equal to zero, in which case
+     * capacityIncrement, unless the value of
+     * capacityIncrement is less than or equal to zero, in which case
      * the new capacity will be twice the old capacity; but if this new size
-     * is still smaller than <tt>minCapacity</tt>, then the new capacity will
-     * be <tt>minCapacity</tt>.
+     * is still smaller than minCapacity, then the new capacity will
+     * be minCapacity.
      *
      * @param minCapacity the desired minimum capacity.
      */
@@ -270,7 +270,7 @@ public final class VectorD extends Vector {
      * Returns the current capacity of this vector.
      *
      * @return  the current capacity (the length of its internal 
-     *          data arary, kept in the field <tt>elementData</tt> 
+     *          data arary, kept in the field elementData 
      *          of this vector.
      */
     public int capacity() {
@@ -299,9 +299,9 @@ public final class VectorD extends Vector {
 
     /**
      * Returns an enumeration of the components of this vector. The 
-     * returned <tt>Enumeration</tt> object will generate all items in 
-     * this vector. The first item generated is the item at index <tt>0</tt>, 
-     * then the item at index <tt>1</tt>, and so on. 
+     * returned Enumeration object will generate all items in 
+     * this vector. The first item generated is the item at index 0, 
+     * then the item at index 1, and so on. 
      *
      * @return  an enumeration of the components of this vector.
      * @see     Enumeration
@@ -330,7 +330,7 @@ public final class VectorD extends Vector {
      * @param   elem   an object.
      * @return  <code>true</code> if and only if the specified object 
      * is the same as a component in this vector, as determined by the 
-     * <tt>equals</tt> method; <code>false</code> otherwise.
+     * equals method; <code>false</code> otherwise.
      */
     public boolean contains(Object elem) {
 	return indexOf(elem, 0) >= 0;
@@ -342,8 +342,8 @@ public final class VectorD extends Vector {
      *
      * @param   elem   an object.
      * @return  the index of the first occurrence of the argument in this
-     *          vector, that is, the smallest value <tt>k</tt> such that 
-     *          <tt>elem.equals(elementData[k])</tt> is <tt>true</tt>; 
+     *          vector, that is, the smallest value k such that 
+     *          elem.equals(elementData[k]) is true; 
      *          returns <code>-1</code> if the object is not found.
      * @see     Object#equals(Object)
      */
@@ -360,12 +360,12 @@ public final class VectorD extends Vector {
      * @param   index   the non-negative index to start searching from.
      * @return  the index of the first occurrence of the object argument in
      *          this vector at position <code>index</code> or later in the
-     *          vector, that is, the smallest value <tt>k</tt> such that 
-     *          <tt>elem.equals(elementData[k]) && (k &gt;= index)</tt> is 
-     *          <tt>true</tt>; returns <code>-1</code> if the object is not 
-     *          found. (Returns <code>-1</code> if <tt>index</tt> &gt;= the
-     *          current size of this <tt>VectorD</tt>.)
-     * @exception  IndexOutOfBoundsException  if <tt>index</tt> is negative.
+     *          vector, that is, the smallest value k such that 
+     *          elem.equals(elementData[k]) and (k &gt;= index) is 
+     *          true; returns <code>-1</code> if the object is not 
+     *          found. (Returns <code>-1</code> if index &gt;= the
+     *          current size of this VectorD.)
+     * @exception  IndexOutOfBoundsException  if index is negative.
      * @see     Object#equals(Object)
      */
     public  int indexOf(Object elem, int index) {
@@ -387,8 +387,8 @@ public final class VectorD extends Vector {
      *
      * @param   elem   the desired component.
      * @return  the index of the last occurrence of the specified object in
-     *          this vector, that is, the largest value <tt>k</tt> such that 
-     *          <tt>elem.equals(elementData[k])</tt> is <tt>true</tt>; 
+     *          this vector, that is, the largest value k such that 
+     *          elem.equals(elementData[k]) is true; 
      *          returns <code>-1</code> if the object is not found.
      */
     public int lastIndexOf(Object elem) {
@@ -403,11 +403,11 @@ public final class VectorD extends Vector {
      * @param  index   the index to start searching from.
      * @return the index of the last occurrence of the specified object in this
      *          vector at position less than or equal to <code>index</code> in
-     *          the vector, that is, the largest value <tt>k</tt> such that 
-     *          <tt>elem.equals(elementData[k]) && (k &lt;= index)</tt> is 
-     *          <tt>true</tt>; <code>-1</code> if the object is not found.
-     *          (Returns <code>-1</code> if <tt>index</tt> is negative.)
-     * @exception  IndexOutOfBoundsException  if <tt>index</tt> is greater
+     *          the vector, that is, the largest value k such that 
+     *          elem.equals(elementData[k]) and (k &lt;= index) is 
+     *          true; <code>-1</code> if the object is not found.
+     *          (Returns <code>-1</code> if index is negative.)
+     * @exception  IndexOutOfBoundsException  if index is greater
      *             than or equal to the current size of this vector.
      */
     public  int lastIndexOf(Object elem, int index) {
@@ -434,9 +434,9 @@ public final class VectorD extends Vector {
      *
      * @param      index   an index into this vector.
      * @return     the component at the specified index.
-     * @exception  ArrayIndexOutOfBoundsException  if the <tt>index</tt> 
+     * @exception  ArrayIndexOutOfBoundsException  if the index 
      *             is negative or not less than the current size of this 
-     *             <tt>VectorD</tt> object.
+     *             VectorD object.
      *             given.
      * @see	   #get(int)
      * @see	   List
@@ -458,7 +458,7 @@ public final class VectorD extends Vector {
     }
 
     /**
-     * Returns the first component (the item at index <tt>0</tt>) of 
+     * Returns the first component (the item at index 0) of 
      * this vector.
      *
      * @return     the first component of this vector.
@@ -519,7 +519,7 @@ public final class VectorD extends Vector {
      * this vector with an index greater or equal to the specified 
      * <code>index</code> is shifted downward to have an index one 
      * smaller than the value it had previously. The size of this vector 
-     * is decreased by <tt>1</tt>.<p>
+     * is decreased by 1.<p>
      *
      * The index must be a value greater than or equal to <code>0</code> 
      * and less than the current size of the vector. <p>
@@ -651,7 +651,7 @@ public final class VectorD extends Vector {
     /**
      * Returns a clone of this vector. The copy will contain a
      * reference to a clone of the internal data array, not a reference 
-     * to the original internal data array of this <tt>VectorD</tt> object. 
+     * to the original internal data array of this VectorD object. 
      *
      * @return  a clone of this vector.
     public  Object clone() {

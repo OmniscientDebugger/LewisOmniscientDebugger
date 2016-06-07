@@ -24,10 +24,10 @@ manifest {
     			"Manifest-Version": "1.0",
     			"Created-By": "Neuron Robotics Cooperative",
     			"Specification-Title": "LewisOmniscientDebugger",
-    			"Specification-Version": 1.8,
+    			"Specification-Version": sourceCompatibility,
     			"Specification-Vendor": "Neuron Robotics Cooperative",,
     			"Implementation-Title": "LewisOmniscientDebugger",
-    			"Implementation-Version" : 1.8,
+    			"Implementation-Version" : sourceCompatibility,
     			"Implementation-Vendor": "Neuron Robotics Cooperative"
         		
     )
@@ -83,7 +83,7 @@ jar {
 
 group = "com.neuronrobotics"
 archivesBaseName = "LewisOmniscientDebugger"
-version = 1.8
+version = sourceCompatibility
 
 task javadocJar(type: Jar) {
 	classifier = 'javadoc'
@@ -103,7 +103,7 @@ artifacts {
 	archives  jar
 }
 
-/*
+
 signing {
 	sign configurations.archives
 }
@@ -128,8 +128,8 @@ uploadArchives {
 		  url 'http://neuronrobotics.com'
   
 		  scm {
-			connection 			'scm:git:https://github.com/NeuronRobotics/java-bowler.git'
-			developerConnection 'scm:git:git@github.com:NeuronRobotics/java-bowler.git'
+			connection 			'scm:git:https://github.com/OmniscientDebugger/LewisOmniscientDebugger.git'
+			developerConnection 'scm:git:https://github.com/OmniscientDebugger/LewisOmniscientDebugger.git'
 			url 'https://github.com/NeuronRobotics/java-bowler'
 		  }
   
@@ -144,11 +144,11 @@ uploadArchives {
 			developer {
 			  id 'madhephaestus'
 			  name 'Kevin Harrington'
-			  email 'kharrington@neuronrobotics.com'
+			  email 'mad.hephaestus@gmail.com'
 			}
 		  }
 		}
 	  }
 	}
   }
-*/
+
