@@ -293,6 +293,7 @@ public class MyCollections {
      * Reverses the order of the elements in the specified list.<p>
      *
      * This method runs in linear time.
+     * @param l incoming list
      *
      * @param  list the list whose elements are to be reversed.
      * @throws UnsupportedOperationException if the specified list's
@@ -353,6 +354,7 @@ public class MyCollections {
      * quadratic time for a "sequential access" list.
      *
      * @param  list the list to be shuffled.
+     * @param rnd random number
      * @param  r the source of randomness to use to shuffle the list.
      * @throws UnsupportedOperationException if the specified list's
      *         list-iterator does not support the <tt>set</tt> operation.
@@ -461,6 +463,7 @@ public class MyCollections {
      * time proportional to the size of the collection.
      *
      * @param  coll the collection whose minimum element is to be determined.
+     * @param comp 
      * @return the minimum element of the given collection, according
      *         to the specified comparator.
      * @throws ClassCastException if the collection contains elements that are
@@ -523,6 +526,7 @@ public class MyCollections {
      * time proportional to the size of the collection.
      *
      * @param  coll the collection whose maximum element is to be determined.
+     * @param comp 
      * @return the maximum element of the given collection, according
      *         to the specified comparator.
      * @throws ClassCastException if the collection contains elements that are
@@ -1557,6 +1561,7 @@ public class MyCollections {
     /**
      * Returns an immutable set containing only the specified object.
      * The returned set is serializable.
+     * @param o 
      *
      * @return an immutable set containing only the specified object.
      */

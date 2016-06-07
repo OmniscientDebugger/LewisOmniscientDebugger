@@ -803,7 +803,6 @@ public final class VectorD extends Vector {
      *
      * @exception ArrayIndexOutOfBoundsException index out of range (index
      * 		  &lt; 0 || index &gt;= size()).
-     * @param index the index of the element to removed.
      * @since 1.2
      */
     public  Object remove(int index) {

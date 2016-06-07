@@ -195,6 +195,7 @@ public final class HashMapEq extends AbstractMap implements Map, Cloneable,
      * map is created with a capacity of twice the number of mappings in
      * the given map or 11 (whichever is greater), and a default load factor,
      * which is <tt>0.75</tt>.
+     * @param t incoming map
      */
     public HashMapEq(Map t) {
 	this(Math.max(2*t.size(), 11), 0.75f);
