@@ -1,0 +1,60 @@
+source ~/Debugger/scripts/aliasesLocal
+
+
+rm -r ~/Debugger/lambda ~/Debugger/insa
+mkdir ~/Debugger/lambda 
+mkdir ~/Debugger/insa
+mkdir ~/Debugger/lambda/Debugger
+mkdir ~/Debugger/insa/LSD
+
+cd ~/Debugger/com/lambda/Debugger
+foreach f (*.java)
+sed -f ~/Debugger/scripts/commands.sed $f > ~/Debugger/lambda/Debugger/$f
+end
+
+
+
+
+
+cd ~/Debugger/edu/insa/LSD
+foreach f (*.java)
+sed -f ~/Debugger/scripts/commands.sed $f > ~/Debugger/insa/LSD/$f
+end
+
+
+
+
+
+cd ~/Debugger/lambda/Debugger
+
+rm *.class
+echo Compiling in lambda: *.java; javac -g *.java; ddebugify Demo*.class  Quick*.class Rewrite*.class Analysis.class PrefixEntry.class WordEntry.class; 
+
+cd ~/Debugger/com/lambda/Debugger
+
+rm *.class
+echo Compiling in com/lambda: *.java; javac -g *.java; debugify Demo*.class Quick*.class Rewrite*.class Analysis.class PrefixEntry.class WordEntry.class; ddebugify *.class; javac My*java Debugify.java
+
+
+
+
+
+
+cd ~/Debugger/insa/LSD
+
+rm *.class
+echo Compiling in insa: *.java; javac -g *.java; 
+
+cd ~/Debugger/edu/insa/LSD
+
+rm *.class
+echo Compiling in edu/insa: *.java; javac -g *.java; ddebugify *.class;
+
+cd 
+rm -r  .DemoOld
+mv .Demo .DemoOld
+cp -r Debugger .Demo
+rm -r ~/.Demo/countEvents
+rm -r ~/.Demo/*jar
+
+echo "Debugger copied to Demo:            "

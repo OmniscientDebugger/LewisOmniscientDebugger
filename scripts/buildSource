@@ -1,0 +1,32 @@
+#! /bin/csh
+
+rm -r ~/.DebuggerReleased
+cp -r ~/Debugger ~/.DebuggerReleased
+
+rm -r ~/.DebuggerReleased/lambda
+rm -r ~/.DebuggerReleased/insa
+rm -r ~/.DebuggerReleased/org
+rm -r ~/.DebuggerReleased/JFCDD
+rm -r ~/.DebuggerReleased/JFC
+rm -r ~/.DebuggerReleased/JAVAX
+rm ~/.DebuggerReleased/docs/*~
+rm ~/.DebuggerReleased/scripts/*~
+rm ~/.DebuggerReleased/*~ ~/.DebuggerReleased/*.jar
+
+rm ~/.DebuggerReleased/edu/insa/LSD/*.class
+rm ~/.DebuggerReleased/edu/insa/LSD/*~
+rm ~/.DebuggerReleased/com/lambda/Debugger/*.class
+rm ~/.DebuggerReleased/com/lambda/Debugger/*~
+rm ~/.DebuggerReleased/com/lambda/Debugger/.*~
+rm ~/.DebuggerReleased/com/lambda/RegressionTests/*~
+rm ~/.DebuggerReleased/com/lambda/RegressionTests/*.class
+rm ~/.DebuggerReleased/com/lambda/RegressionTests/*/*~
+rm ~/.DebuggerReleased/com/lambda/RegressionTests/*/*.class
+
+rm ~/.DebuggerReleased/META-INF/*~
+
+cd ~/.DebuggerReleased
+
+jar vcmf META-INF/MANIFEST.MF ~/programs/Old/Source_DATE.jar .
+
+echo "Rename to correct date `date`"

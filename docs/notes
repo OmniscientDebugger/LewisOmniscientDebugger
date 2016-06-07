@@ -1,0 +1,43 @@
+			Notes for 20 Nov 02
+
+		Hard, Medium, Easy / Important, Semi-Important Not Important
+		! == Done
+
+				RFE:
+
+H/N	Set env vars & CLASSPATH for invocation via double-click
+
+M/N	How to handle piles of jar files if only a few should be instrumented
+
+!	E/N	Allow .debuggerDontInstrument to include packages
+
+M/I	What are all of the calling formats? Do I handle them right?
+?/N		java -jar xxx.jar
+done		java -cpXXX xxx.yyy
+done?		double click
+
+H/N	Serialize data
+
+H/N	Record Graphics [NEED HELP HERE]
+
+!	M/N	Replace variable lookups with direct index
+
+H/S	Verify code before loading
+
+
+
+				BUGS:
+
+?/N	Mac OS X seems to mess up recognition of ".", "/", and "~" in file choosers?!
+		(See Launch.java & SourceFileFinder.java)
+
+H/N	Mac OS X implementation of JNLP is broken: it puts the menu bar up in 
+	it's own location (which doesn't handle buttons & data) WEIRD!
+
+?/N	MAC OS X doesn't implement the bell correctly. It prints out ^G to STDOUT.
+
+! 	H/N	Evaluating a expression in the alternate timeline after a previous run
+	and changing a value will break with:
+	DebuggerException: time >= eot() 238 >= 230
+
+! 	M/N	Unparented methods do odd stuff when calling super() ? (no?)

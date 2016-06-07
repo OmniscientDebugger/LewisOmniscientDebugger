@@ -1,0 +1,177 @@
+<font size=5><center><B>Omniscient Debugging</B></center>
+<font size=3><center>"Because the Debugger Knows Everything"</center>
+<font size=2><center>18 February 2007</center>
+<br>
+<font size=3>
+What if your debugger could go "go backwards
+in time?" Would that make debugging easier?
+By simply recording all variable assignments, it is possible to do essentially this. 
+This is the underlying idea for omniscient debugging.
+The amazing part is that significantly large programs can be debugged in this fashion --
+Ant, JUnit, the debugger itself.
+<br>
+<br>
+Returning from rave reviews in Europe (Ecole des mines de Nantes,
+INSA, ECOOP, AADEBUG, France! Sweden! Germany! Russia! Belgium!
+Estonia!), the ODB made its next public appearence at OOPSLA where it
+passed the $100 challenge (that was the amount offered for any bug it
+couldn't find). Its presentation to thousands of screaming fans at <b>JavaOne</b> went 
+over with a blast! We (ODB & I) received the "Outstanding Talk" award. Yow! I later gave a 
+   <a href="http://video.google.com/videoplay?docid=3897010229726822034">videotaped talk at Google</a>.
+
+
+<br><br>
+Life is good
+for the ODB and that's bad for bugs.  
+
+<br><br>
+
+<img align=center src="ODB1.png">
+<br>
+<font size=3>
+<br>
+The debugger works by collecting "time stamps" which record everything
+that happens in a program. A GUI then allows you to navigate
+backwards in time to look at objects, variables, method calls, etc.
+<br> <br>
+This means that you can see which values are bad, then find where those
+values came from, who set them and why. This also means that there are no
+non-deterministic problems. You don't have to guess where the problems might
+be, you don't have to set breakpoints, you don't have to wonder which threads
+ran when, you don't ever have to repeat a program 
+run. This is the debugger that you always dreamed about, but never thought was
+possible.
+<br> <br>
+   <a href="ODBDescription.html">One page description of the ODB</a>
+
+<br> 
+   <a href="Article.html">Article from java.sun.com</a>
+<br>  
+   <a href="AADEBUG_Mar_03.pdf">AADEBUG paper on Omniscient Debugging (pdf)</a>
+<br> 
+   <a href="UserManual/ODBUserManual.html">ODB User Manual</a>
+<br> <br>
+
+
+<h3>Changes to Newest Version
+</h3>
+
+Eclipse will launch the ODB from the RUN menu. [Import the ODB, set the main class to be com.lambda.Debugger.Debugger, and set the argument to be the program you want to run. (It's a bit lame, but simple. I am begging some folks for help with Eclipse.) I expect the same can be done for other IDEs.]
+
+<BR>
+<BR>
+Speaking of other IDEs, a plugin has been done for <a href="http://www.nbextras.org/2006/04/25/1145995945018.html">Net Beans.</a>
+<BR>
+<BR>
+JDK1.5 works. You must select the correct version of the ODB now. ODB1.5 for JDK1.5 or ODB1.4 for JDK1.4.
+As you may imagine, the 1.5 version is new and not well tested. I am putting out new releases modestly
+regularly.
+<br><br>
+<h3>Running the Demo
+</h3>
+
+You may run the Web Start Demo by clicking on Web Start below and allowing its permissions request.
+<br><br>
+If you don't have Web Start, you can download debugger.jar (into ~/Debugger or c:\Debugger) and run it  
+by double-clicking on the jar file or running the jar file directly (<code>java -jar debugger.jar</code>).
+
+<br><br>
+Select "Demo" (a built-in pointer to a (buggy!) multithreaded quicksort). The program will run, then the debugger will popup and you will be able to "explore" the history of the program. Push the buttons, double-click on the objects.
+<br><br>
+You may select your own programs instead of the demo by defining some CSH aliases and calling debug:
+<br><br>
+<code>
+% cd ~/Debugger
+<br>
+% jar xf debugger.jar aliases docs
+<br>
+% source aliases
+<br>
+% debug YourProgram
+</code>
+<br><br>
+ There is a full  manual inside the .jar file (see docs/*), along with some Unix aliases (Microsoft .bat files) to make it easier.
+ <br> <br>
+
+The current distributions are here: <a href="ODB1.4.jar">ODB1.4</a>
+<a href="ODB1.5.jar">ODB1.5</a>
+ <br> 
+You may run the 1.4 <a href="debugger.jnlp">Web Start Demo</a> here.
+
+ <br> <br>
+<h3>A Better Mousetrap</h3>
+
+
+That old saw about the mousetrap? Wrong.
+<BR><BR>
+It isn't BUILDING a better mousetrap that's important, it's
+MARKETING it. 
+<BR><BR>
+I am not a great marketeer. 
+<BR><BR>
+(I don't understand why. I'm clever, I'm friendly, I'm
+funny. Why don't people go for my stuff? I dunnknow.)
+<BR><BR>
+So anyway, I've given gobs of talks. (I like giving
+talks. You want to invite me to give a talk and find some
+bugs at the same time ?) I've written papers for
+conferences. I've published articles in major magazines.
+<BR><BR>
+Everybody loves it! They clearly understand the
+concept. They ask great questions, they make suggestions.
+But do they use it afterwards??
+<BR><BR>
+The ODB is as close to a silver bullet as you can get. Why
+don't people use it?
+<BR><BR>
+I don't get it. :-(
+<BR><BR>
+
+
+
+<h3>Open Source</h3>
+
+The ODB is open source ala GNU. I have not made a major effort
+to put its code on any of the open source repositories as it
+does not currently seem the right thing to do. Just not
+worth the effort.
+
+
+<BR><BR>
+<h3>Needed</h3>
+
+More than anything else, I need people to use the ODB. I
+need them to use it intensively and exclusively on a wide
+range of programs. I need to talk with them and understand
+how they see the model of the world that the ODB presents. I
+need to experiment with different modes of interaction and
+figure out what works best.
+<BR><BR>
+
+There is no reason to change the current version of the ODB
+at all until I have enough information to make decisions.
+<BR><BR>
+I use it exclusively when developing Java code. In the past
+year this included two heavy programming classes I
+taught. We built our own version of BCEL, a complete web
+framework (ala Spring) including a web server (ala Tomcat)
+and a full battlefield simulation program (i.e., a *lot* of
+code). I saw a lot of bugs*. I never resorted to another
+debugger.
+<BR><BR>
+I know what issues I encountered. Now I need to know what
+other people encounter.
+<BR><BR>
+Bil Lewis<BR>
+Bil@LambdaCS.com
+<BR><BR><BR><BR>
+========================================================<BR><BR>
+* My style of programming has changed since the ODB. I now
+write insanely fast, making numerous mistakes. This gives
+me something to search for with the ODB. It's *fun*.
+
+
+ <br> <br>
+
+
+

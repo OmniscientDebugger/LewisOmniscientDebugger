@@ -1,0 +1,46 @@
+#! /bin/csh
+
+cd ~/Debugger/com/lambda/Debugger
+jd
+
+rm -r ~/.DebuggerReleased
+cp -r ~/Debugger ~/.DebuggerReleased
+
+rm -r ~/.DebuggerReleased/lambda
+rm -r ~/.DebuggerReleased/insa
+rm -r ~/.DebuggerReleased/countEvents
+rm -r ~/.DebuggerReleased/scripts/*~
+rm -r ~/.DebuggerReleased/JFCDD
+rm -r ~/.DebuggerReleased/JFC
+rm -r ~/.DebuggerReleased/JAVAX
+rm -r ~/.DebuggerReleased/*jar
+
+cd ~/.DebuggerReleased/com/lambda/Debugger
+rm  *~
+
+rm -r ~/.DebuggerReleased/com/lambda/RegressionTests/
+
+cd ~/.DebuggerReleased/docs
+rm *~
+
+cd ~/.DebuggerReleased/Microsoft
+rm *~
+
+
+rm -r ~/.DebuggerReleased/insa
+cd ~/.DebuggerReleased/edu/insa/LSD
+rm *~
+jc
+
+
+
+cd ~/.DebuggerReleased/
+rm *~ debugger.jar
+
+cd ~/.DebuggerReleased
+
+jar cmf META-INF/MANIFEST.MF ~/programs/Old/Debugger_DATE.jar .
+
+# keytool -genkey -alias DebuggerAlias -keyalg RSA  -dname "cn=DebuggerKey" -keypass 3252667 -storepass 3252667
+echo "jarsigner ~/programs/Old/Debugger_DATE.jar DebuggerAlias"
+echo "mv ~/programs/Old/Debugger_DATE.jar  ~/programs/Old/Debugger_.jar"

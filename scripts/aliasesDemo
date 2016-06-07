@@ -1,0 +1,29 @@
+#                        Aliases for Debugger demos when unpacked on ${HOME}/Debugger
+
+setenv CLASSPATH /Users/bil/Debugger:.
+setenv memSize          400100100
+setenv ddHEAP_SIZE 	"-Xms$memSize -Xmx$memSize -DDMEMORY=$memSize -DMEMORY=300100"
+setenv dHEAP_SIZE 	"-Xms$memSize -Xmx$memSize -DMEMORY=$memSize"
+setenv dPATH		'-cp ${HOME}/Debugger:${CLASSPATH}'
+setenv ddPATH		'-cp ${HOME}/Debugger'
+setenv DDPATH		'-cp ${HOME}/.Demo'
+setenv debugger		com.lambda.Debugger.Debugger
+setenv demo		com.lambda.Debugger.Demo
+setenv ddFLAGS		'-DDEBUG_DEBUGGER -DDDEBUG_DEBUGGER'
+
+
+
+setenv SW_DIR /Users/bil/programs/AspectJ/docs/examples/spacewar
+
+alias spacewar	  "(cd $SW_DIR; java -Xmx200100100 -Xms200100100 -DDMEMORY=80100100 -cp /Users/bil/.Demo:.:/Users/bil/programs/AspectJ/ajre/lib/aspectjrt.jar -DDVGA lambda.Debugger.Debugger spacewar.Game)"
+
+# For spacewar
+
+setenv SW_HOME		${HOME}/programs/AspectJ/docs/examples/spacewar/
+setenv SWPATH		'-cp ${HOME}/.Demo:${SW_HOME}:/Users/bil/programs/AspectJ/aspectj1.0/lib/aspectjrt.jar:.'
+
+alias debug	  "(cd $SW_DIR; java -Xmx200100100 -Xms200100100 -DDMEMORY=80100100 -cp /Users/bil/.Demo:.:/Users/bil/programs/AspectJ/ajre/lib/aspectjrt.jar -DDVGA lambda.Debugger.Debugger spacewar.Game); echo "
+
+alias debug       "(cd $ddir; java $ddHEAP_SIZE $DDPATH $ddebugFLAGS -DDPAUSED -DBUG -DVGA -DDVGA 	    $ddebugger $debugger $demo); echo "
+
+

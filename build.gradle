@@ -1,0 +1,154 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'signing'
+	
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+File buildDir = file(".");
+
+//Properties props = new Properties()
+//props.load(new FileInputStream(buildDir.getAbsolutePath()+"/src/main/resources/com/neuronrobotics/sdk/config/build.properties"))
+sourceSets {
+	
+	test {
+		java {
+			srcDirs = ["test/java/src","examples/java/src" ]  // Note @Peter's comment below
+		}
+	}
+}
+manifest {
+    attributes(	
+    			"Manifest-Version": "1.0",
+    			"Created-By": "Neuron Robotics Cooperative",
+    			"Specification-Title": "LewisOmniscientDebugger",
+    			"Specification-Version": 1.8,
+    			"Specification-Vendor": "Neuron Robotics Cooperative",,
+    			"Implementation-Title": "LewisOmniscientDebugger",
+    			"Implementation-Version" : 1.8,
+    			"Implementation-Vendor": "Neuron Robotics Cooperative"
+        		
+    )
+}
+
+jar.archiveName = "LewisOmniscientDebugger.jar"
+
+//apply from: 'http://gradle-plugins.mihosoft.eu/latest/vlicenseheader.gradle'
+//repairHeaders.licenseHeaderText = new File(projectDir,'./license-template.txt')
+
+task wrapper(type: Wrapper, description: 'Creates and deploys the Gradle wrapper to the current directory.') {
+    gradleVersion = '2.7'
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repository-bubblecloud.forge.cloudbees.com/release/'}
+	maven { url 'https://clojars.org/repo' }
+	maven { url 'https://oss.sonatype.org/content/repositories/releases/'  }
+	maven { url 'https://jline.sourceforge.net/m2repo' }
+	maven { url 'https://repo.spring.io/milestone'}
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots/'  }
+	maven { url 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'  }
+	maven { url 'https://jenkinsci.artifactoryonline.com/jenkinsci/public/' }
+	maven { url 'https://plugins.gradle.org/m2/' }
+}
+	
+dependencies {
+	//TODO change as many of these as possible to Maven repositories	
+	// http://mvnrepository.com/artifact/org.apache.bcel/bcel
+	compile group: 'org.apache.bcel', name: 'bcel', version: '5.2'
+
+}
+
+// create a fat-jar (class files plus dependencies
+// excludes VRL.jar (plugin jar files must not start with 'vrl-\\d+')
+jar {
+	
+	// remove the security files (from mail.jar / activation.jar) so that the jar will be executable.
+	
+	doFirst { 
+	    // dependencies except VRL
+	    from (configurations.runtime.asFileTree.
+	        filter({file->return !file.name.startsWith("vrl-0")}).
+	        files.collect { zipTree(it) } ){
+	    	exclude 'META-INF/MANIFEST.MF'
+			exclude 'META-INF/*.SF'
+			exclude 'META-INF/*.DSA'
+			exclude 'META-INF/*.RSA'
+	    }
+	}
+}
+
+group = "com.neuronrobotics"
+archivesBaseName = "LewisOmniscientDebugger"
+version = 1.8
+
+task javadocJar(type: Jar) {
+	classifier = 'javadoc'
+	from javadoc
+}
+
+task sourcesJar(type: Jar) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+/*
+
+*/
+artifacts {
+	archives javadocJar
+	archives  sourcesJar
+	archives  jar
+}
+
+/*
+signing {
+	sign configurations.archives
+}
+uploadArchives {
+	repositories {
+	  mavenDeployer {
+		beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+  
+		repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+		  authentication(userName: ossrhUsername, password: ossrhPassword)
+		}
+  
+		snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+		  authentication(userName: ossrhUsername, password: ossrhPassword)
+		}
+  
+		pom.project {
+		  name 'Java Bowler'
+		  packaging 'jar'
+		  // optionally artifactId can be defined here
+		  description 'A command line utility for accesing the bowler framework.'
+		  url 'http://neuronrobotics.com'
+  
+		  scm {
+			connection 			'scm:git:https://github.com/NeuronRobotics/java-bowler.git'
+			developerConnection 'scm:git:git@github.com:NeuronRobotics/java-bowler.git'
+			url 'https://github.com/NeuronRobotics/java-bowler'
+		  }
+  
+		  licenses {
+			license {
+			  name 'The Apache License, Version 2.0'
+			  url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+			}
+		  }
+  
+		  developers {
+			developer {
+			  id 'madhephaestus'
+			  name 'Kevin Harrington'
+			  email 'kharrington@neuronrobotics.com'
+			}
+		  }
+		}
+	  }
+	}
+  }
+*/

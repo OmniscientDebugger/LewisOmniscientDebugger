@@ -1,0 +1,84 @@
+#                        Aliases for Debugger demos when unpacked on ${HOME}/Debugger
+
+setenv CLASSPATH /Users/bil/Debugger:.
+alias jc  'echo Compiling: *.java; javac -g *.java'
+alias jd  'echo Compiling: *.java; javac -g *.java; debugify Demo*.class'
+alias jcc 'echo Compiling: *.java; javac -g *.java; debugify Demo*.class; ddebugify *.class; javac My*java'
+
+# Make the heap about 50MB less than the total physical memory. This is for 128MB
+setenv memSize          800000000
+setenv ddHEAP_SIZE 	"-Xms$memSize -Xmx$memSize -DMEMORY=$memSize"
+setenv dPATH		'-cp ${HOME}/Debugger:${CLASSPATH}'
+setenv ddPATH		'-cp ${HOME}/Debugger'
+setenv DDPATH		'-cp ${HOME}/.Demo'
+setenv debugger		com.lambda.Debugger.Debugger
+setenv demo		com.lambda.Debugger.Demo
+setenv ddFLAGS		'-DDEBUG_DEBUGGER -DDDEBUG_DEBUGGER'
+
+
+
+# These are the sets of flags one uses most. They can be set from the Controller window too.
+alias debug	 java $ddHEAP_SIZE $dPATH                                    	$debugger
+alias debugdi    java $ddHEAP_SIZE $dPATH  -DDONT_INSTRUMENT                 	$debugger
+alias debugn	 java $ddHEAP_SIZE $dPATH  -DDONT_SHOW                       	$debugger
+alias debugp	 java $ddHEAP_SIZE $dPATH  -DPAUSED -DDONT_START              	$debugger
+alias debugnp	 java $ddHEAP_SIZE $dPATH  -DPAUSED -DDONT_SHOW              	$debugger
+alias debugndi	 java $ddHEAP_SIZE $dPATH  -DDONT_INSTRUMENT -DDONT_SHOW      	$debugger
+alias debugpdi	 java $ddHEAP_SIZE $dPATH  -DDONT_INSTRUMENT -DPAUSED         	$debugger
+alias debugnpdi	 java $ddHEAP_SIZE $dPATH  -DDONT_INSTRUMENT -DPAUSED -DDONT_SHOW       $debugger
+alias debugv	 java $ddHEAP_SIZE $dPATH  -DTRACE_LOADER                      	$debugger
+
+# These are for selective hand-debugifying.
+alias debugify	 java $ddHEAP_SIZE $dPATH                                    	com.lambda.Debugger.Debugify
+alias debugifyF	 java $ddHEAP_SIZE $dPATH  -DPUTFIELD_ONLY                   	com.lambda.Debugger.Debugify
+
+
+# The simple demo program. This can be run from the File Chooser menu too (push "Demo").
+alias demo       java $ddHEAP_SIZE $DDPATH  -DDONT_INSTRUMENT                 	$debugger $demo
+alias lemo       java $ddHEAP_SIZE $ddPATH  -DDONT_INSTRUMENT $ddFLAGS         	$debugger $demo
+
+
+# These are for including the hand-instrumented versions of Vector, Hashtable, and Swing's event dispatch
+setenv ddBPATH          '-Xbootclasspath/p:${HOME}/Debugger:${HOME}/Debugger/JFC -Xbootclasspath/a:${CLASSPATH}/:${HOME}/Debugger'
+
+alias debugJFC	 java $ddHEAP_SIZE $ddBPATH -DDONT_INSTRUMENT     	      $debugger
+alias demoJFC    java $ddHEAP_SIZE $ddBPATH -DDONT_INSTRUMENT                 $debugger $demo
+
+
+
+
+
+
+
+#				THESE ARE FOR DEMOS AND DEBUGGER DEBUGGING ONLY
+
+
+# These run the RECURSIVE version of the debugger on itself. (Note naming scheme for packages)
+# We assume you'll do selective hand-debugifying & ddebugifying.
+setenv ddebugger		lambda.Debugger.Debugger
+setenv ddebugFLAGS		'-DDDONT_INSTRUMENT -DDONT_INSTRUMENT -DDDONT_SHOW'
+
+alias ddb	 java $ddHEAP_SIZE $dPATH -DDDONT_INSTRUMENT -DDDONT_SHOW   	$ddebugger $debugger
+alias ddebug	 java $ddHEAP_SIZE $dPATH $ddebugFLAGS  	            	$ddebugger $debugger
+alias ddebugn	 java $ddHEAP_SIZE $dPATH $ddebugFLAGS  -DDONT_SHOW          	$ddebugger $debugger
+alias ddebugp	 java $ddHEAP_SIZE $dPATH $ddebugFLAGS  -DPAUSED             	$ddebugger $debugger
+alias ddebugnp	 java $ddHEAP_SIZE $dPATH $ddebugFLAGS  -DPAUSED -DDONT_SHOW 	$ddebugger $debugger
+
+
+# These are for selective hand-ddebugifying.
+alias ddebugify	 java $ddHEAP_SIZE $dPATH                                    	lambda.Debugger.Debugify
+alias ddebugifyF java $ddHEAP_SIZE $dPATH  -DPUTFIELD_ONLY                   	lambda.Debugger.Debugify
+
+
+# The complex demo program. This must be run from the command line with the jar file unpacked &everything ddebugified.
+alias ddemo       java $ddHEAP_SIZE $DDPATH $ddebugFLAGS -DDPAUSED -DBUG -DVGA -DDVGA   	    $ddebugger $debugger $demo
+alias ldemo       java $ddHEAP_SIZE $ddPATH $ddebugFLAGS -DDPAUSED -DBUG -DVGA -DDVGA $ddFLAGS   $ddebugger $debugger $demo
+alias ddemonp       java $ddHEAP_SIZE $DDPATH $ddebugFLAGS -DBUG -DVGA -DDVGA       	   	    $ddebugger $debugger $demo
+alias ldemonp       java $ddHEAP_SIZE $ddPATH $ddebugFLAGS $ddFLAGS -DBUG -DVGA -DDVGA  	    $ddebugger $debugger $demo
+
+
+# These are for debugging the debugger.
+alias debugd	 java $ddHEAP_SIZE $ddPATH  -DDEBUG_DEBUGGER                  $debugger
+alias debugnd	 java $ddHEAP_SIZE $ddPATH  -DNO_DEFAULTS                     $debugger
+alias ddebugJFC	 java $ddHEAP_SIZE $ddBPATH -DDDONT_INSTRUMENT     	      $debugger
+alias ddemoJFC   java $ddHEAP_SIZE $ddBPATH -DDDONT_INSTRUMENT                $debugger $demo

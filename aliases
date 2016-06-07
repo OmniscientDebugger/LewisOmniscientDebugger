@@ -1,0 +1,44 @@
+#                        Aliases for Debugger when a jar file in ~/Debugger
+
+
+# MEMORY is the number used to determine when to GC. Currently 400MB => 2M TSs
+# If your program needs lots of space & fewer TSs, make MEMORY < Xmx
+# If your program needs less  space & more TSs, make MEMORY == Xmx
+# Exceeding physical memory is not a major problem, though GC'ing a 2GB
+# virtual memory with 128MB physical is... ugly
+# MAX memory size is 2GB (31 bits). 80-400MB is generally a good size.
+# MEMORY overrides the value in .debuggerDefaults
+
+# On current distributions (2004-?) the ClassLoader.jar file will NOT
+# exist and that bit of the command line will be ignored. The programmer
+# may install it herself:
+# java com.lambda.Debugger.InstrumentorForCL ~/Debugger
+
+setenv memSize          400100100
+setenv ddHEAP_SIZE 	"-Xms$memSize -Xmx$memSize -DMEMORY=$memSize"
+setenv ddPATH		'-cp ${HOME}/Debugger/debugger.jar:${CLASSPATH} -Xbootclasspath/p:${HOME}/Debugger/ClassLoader.jar'
+setenv debugger		com.lambda.Debugger.Debugger
+
+
+# It is assumed (required!) that CLASSPATH is properly set.
+# If additional user flags are desired, set this env var:
+setenv USER_FLAGS
+
+# debug              	brings up a file chooser. This is only for programs not in jar files
+# debug MyProgram    	starts the program & starts recording right away.
+# debugp MyProgram   	just brings up the controller window so you can set flags.
+# debugn MyProgram   	starts the program & recording, but waits for you to push "STOP RECORDING"
+#			(for programs where main() exits while other threads continue to run)
+alias debug	 java $ddHEAP_SIZE $ddPATH '$USER_FLAGS'        			$debugger
+alias debugp	 java $ddHEAP_SIZE $ddPATH '$USER_FLAGS' -DPAUSED  -DDONT_START 	$debugger
+alias debugn	 java $ddHEAP_SIZE $ddPATH '$USER_FLAGS' -DDONT_SHOW  	 		$debugger
+alias debugnp	 java $ddHEAP_SIZE $ddPATH '$USER_FLAGS' -DDONT_SHOW  -DPAUSED 		$debugger
+
+# These are for selective hand-debugifying.
+alias debugify	 java $ddHEAP_SIZE $ddPATH                            	com.lambda.Debugger.Debugify
+
+# This prints out loader information (for Verifier & Loader problems)
+alias debugv	 java $ddHEAP_SIZE $ddPATH '$USER_FLAGS' -DTRACE_LOADER               	$debugger
+
+# This is for testing a series of .class files to see if the verifier likes them
+alias testload   java $ddPATH com.lambda.Debugger.TestLoadClass

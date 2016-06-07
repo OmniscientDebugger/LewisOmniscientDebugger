@@ -1,0 +1,46 @@
+		Debugging Backwards in Time
+
+What if a debugger could allow you to simply step BACKWARDS?
+Instead of all that hassle with guessing where to put
+breakpoints and the fear of typing "continue" one too many
+times... What if you could simply go backwards to see what
+went wrong?
+
+This is the essence of the "Omniscient Debugger" -- it remembers
+everything that happened during the run of a program, and allows
+the programmer to "step backwards in time" to see what happened
+at any point of the program. All variable values, all objects,
+all method calls, all exceptions are recorded and the programmer
+can now look at anything that happened at any time.
+
+In this talk, I will describe the design of the "ODB" -- an
+implementation of Omniscient Debugging for Java programs -- and
+discuss the various costs and trade-offs. The last half of the
+talk will be a demonstration of the ODB, showing how the various
+pieces of data are displayed and how the programmer can
+"navigate" through time to see what the program was doing, where
+values were set, when various threads ran, etc.
+
+At the conclusion of the talk, the audience will be invited
+to use the ODB to find some actual bugs. Anyone having a
+laptop with Java on it can download the ODB (beforehand!)
+and try using it to find the bugs themselves.
+
+		     	 ================
+
+The ODB is an experimental program under development. It is
+written in 100% pure Java and has been tested under Solaris,
+MacOS, and Windows. It is freely available at my web site:
+www.LambdaCS.com. 
+
+		     	 ================
+
+Bil Lewis is a computer scientist currently teaching at Tufts
+University. He has worked on natural
+language understanding, expert systems, language design, and
+programming tools.  He studied at Ripon College, the University
+of Indiana, and Penn. He has taught at Stanford and for numerous
+companies. He has worked at Stanford Research Institute, the FMC
+AI Center, and Sun Microsystems.  He wrote "GNU Emacs Lisp", the
+"Threads Primer", "Multithreaded Programming with PThreads", and
+"Multithreaded Programming with Java".

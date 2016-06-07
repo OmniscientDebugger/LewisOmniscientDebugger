@@ -1,0 +1,7 @@
+#! /bin/csh
+
+cd ~/Debugger/com/lambda/Debugger
+rm *
+cp /Users/RECREATABLE/SAVED/eclipse/workspace/Debugger/src/com/lambda/Debugger/*.java .
+csh ~/Debugger/scripts/buildRelease
+
