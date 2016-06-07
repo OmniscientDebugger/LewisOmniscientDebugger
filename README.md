@@ -7,7 +7,9 @@ There are no ODB mailing lists. For support, patches / other
 contributions, bugs, and feature requests, please email me at
 bil@lambdacs.com -- I enjoy hearing your feedback.
 
-Also please visit the website at: https://web.archive.org/web/20150915150119/http://www.lambdacs.com/debugger/
+Also please visit the website at: 
+
+http://omniscientdebugger.github.io/
 
 === System Requirements ===
 
