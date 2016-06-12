@@ -31,7 +31,7 @@ http://omniscientdebugger.github.io/
 #System Requirements
 
 ODB 1.4 works on code complied for JDK 1.3 and 1.4. ODB 1.5 works on code compiled for JDK 1.5. 
-I have not tested it on 1.6. If you have, please let me know.
+I have tested it on 1.6 and it works. Java 7 and up use infered types and invokedetatch, which cause problems at the moment. See Issue: https://github.com/OmniscientDebugger/LewisOmniscientDebugger/issues/1
 
 #Usage
 
