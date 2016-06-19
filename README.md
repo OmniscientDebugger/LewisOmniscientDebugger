@@ -71,6 +71,15 @@ one, please email me.
 #Manual
 
 See http://omniscientdebugger.github.io/ODBUserManual.html Enjoy!
+#Development
+Here is how to build and run the debug the debugger step
+```
+git clone https://github.com/OmniscientDebugger/LewisOmniscientDebugger.git
+
+gradle jar
+
+java -DDEBUG_DEBUGIFY -Xms400100100 -Xmx400100100 -DMEMORY=400100100  -cp build/libs/LewisOmniscientDebugger.jar:$CLASSPATH  com.lambda.Debugger.Debugify build/classes/main/com/lambda/Debugger/Demo.class
+```
 
 
 
