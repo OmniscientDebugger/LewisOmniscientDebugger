@@ -5,7 +5,7 @@ Also please visit the project [website](http://omniscientdebugger.github.io/)
 
 # System Requirements
 ODB 1.4 works on code complied for JDK 1.3 and 1.4. ODB 1.5 works on code compiled for JDK 1.5. 
-I have tested it on 1.6 and it works. Code compiled for Java 7 and up use invokedetatch, which seems to cause problems at the moment. See (Issue)[https://github.com/OmniscientDebugger/LewisOmniscientDebugger/issues/1]:  The Jar's compiled for 1.6 and older do work on the 1.8 JVM. 
+I have tested it on 1.6 and it works. Code compiled for Java 7 and up use invokedetatch, which seems to cause problems at the moment. See [Issue](https://github.com/OmniscientDebugger/LewisOmniscientDebugger/issues/1):  The Jar's compiled for 1.6 and older do work on the 1.8 JVM. 
 
 
 # Maven/Gradle
@@ -45,7 +45,7 @@ command line arguments.
 
 Please also watch the ODB video ["Debugging Backwards in Time"](https://www.youtube.com/watch?v=xpI8hIgOyko)
 
-The research paper can be found at: http://www.cs.kent.edu/~farrell/mc08/lectures/progs/pthreads/Lewis-Berg/odb/AADEBUG_Mar_03.pdf
+The research paper can be found [here](http://www.cs.kent.edu/~farrell/mc08/lectures/progs/pthreads/Lewis-Berg/odb/AADEBUG_Mar_03.pdf)
 
 I am looking for a good short Flash tutorial, with voice annotation,
 of how to use the ODB. I would like to put it on my website. If you create
