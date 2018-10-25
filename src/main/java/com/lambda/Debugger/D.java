@@ -246,7 +246,10 @@ public final class D {
     }
     
     
-    public static synchronized void changeA(Object value, int slIndex, int varIndex, TraceLine tl) {
+    public static  void changeA(Object value, int slIndex, int varIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skipChangeLocalVarA(value, tl.getMethod()) || EventInterface.skipLocalVarA(slIndex, varIndex, value, tl))) return;
@@ -255,6 +258,8 @@ public final class D {
 	locals.add(slIndex, varIndex, value, tl);
 	recursiveEntry = false;
 	return;
+}
+}
     }
 
 
@@ -381,7 +386,11 @@ public final class D {
     // ******************************** CHANGE IVARS ********************************
 
     // Change instance var, type Object
-    public static synchronized void changeIVA(Object o, Object value, int slIndex, String varName, TraceLine tl) {
+    public static  void changeIVA(Object o, Object value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarA(slIndex, o, varName, value, tl))) return;
@@ -389,8 +398,12 @@ public final class D {
 	Shadow shadow = Shadow.get(o);
 	shadow.add(slIndex, varName, value, tl);
 	recursiveEntry = false;
+}}}
     }
-    public static synchronized boolean changeIVZ(Object o, boolean value, int slIndex, String varName, TraceLine tl) {
+    public static  boolean changeIVZ(Object o, boolean value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarZ(slIndex, o, varName, value, tl))) return value;
@@ -400,8 +413,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized byte changeIVB(Object o, byte value, int slIndex, String varName, TraceLine tl) {
+    public static  byte changeIVB(Object o, byte value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarB(slIndex, o, varName, value, tl))) return value;
@@ -411,8 +428,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized char changeIVC(Object o, char value, int slIndex, String varName, TraceLine tl) {
+    public static  char changeIVC(Object o, char value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarC(slIndex, o, varName, value, tl))) return value;
@@ -422,8 +443,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized short changeIVS(Object o, short value, int slIndex, String varName, TraceLine tl) {
+    public static  short changeIVS(Object o, short value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarS(slIndex, o, varName, value, tl))) return value;
@@ -433,8 +458,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized int changeIVI(Object o, int value, int slIndex, String varName, TraceLine tl) {
+    public static  int changeIVI(Object o, int value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarI(slIndex, o, varName, value, tl))) return value;
@@ -444,8 +473,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized long changeIVL(Object o, long value, int slIndex, String varName, TraceLine tl) {
+    public static  long changeIVL(Object o, long value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarL(slIndex, o, varName, value, tl))) return value;
@@ -455,8 +488,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized float changeIVF(Object o, float value, int slIndex, String varName, TraceLine tl) {
+    public static  float changeIVF(Object o, float value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarF(slIndex, o, varName, value, tl))) return value;
@@ -466,8 +503,12 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized double changeIVD(Object o, double value, int slIndex, String varName, TraceLine tl) {
+    public static  double changeIVD(Object o, double value, int slIndex, String varName, TraceLine tl) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return value;	
 	if (CHECK_PATTERN && (skip(CHGINSTANCEVAR) || EventInterface.skipIVarD(slIndex, o, varName, value, tl))) return value;
@@ -477,12 +518,17 @@ public final class D {
 	shadow.add(slIndex, varName, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
 
     // ******************************** ARRAY ********************************
     
     // Change array element, type Object
-    public static synchronized void changeArrayA(Object array, int index, Object value, int slIndex, TraceLine tl) {
+    public static  void changeArrayA(Object array, int index, Object value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skipChangeArrayA(value, tl.getMethod()) || EventInterface.skipArrayA(slIndex, array, index, value, tl))) return;	
@@ -490,8 +536,12 @@ public final class D {
 	Shadow shadow = Shadow.get(array);
 	shadow.add(slIndex, index, value, tl);
 	recursiveEntry = false;
+}}}
     }
-    public static synchronized int changeArrayI(Object array, int index, int value, int slIndex, TraceLine tl) {
+    public static  int changeArrayI(Object array, int index, int value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skipChangeArrayI(value, tl.getMethod()) || EventInterface.skipArrayI(slIndex, array, index, value, tl))) return value;
@@ -501,8 +551,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized byte changeArrayB(Object array, int index, byte value, int slIndex, TraceLine tl) {
+    public static  byte changeArrayB(Object array, int index, byte value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayB(slIndex, array, index, value, tl))) return value;	
@@ -512,8 +566,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized boolean changeArrayZ(Object array, int index, boolean value, int slIndex, TraceLine tl) {
+    public static  boolean changeArrayZ(Object array, int index, boolean value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayZ(slIndex, array, index, value, tl))) return value;	
@@ -523,8 +581,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized char changeArrayC(Object array, int index, char value, int slIndex, TraceLine tl) {
+    public static  char changeArrayC(Object array, int index, char value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayC(slIndex, array, index, value, tl))) return value;	
@@ -534,8 +596,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized short changeArrayS(Object array, int index, short value, int slIndex, TraceLine tl) {
+    public static  short changeArrayS(Object array, int index, short value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayS(slIndex, array, index, value, tl))) return value;	
@@ -545,8 +611,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized long changeArrayL(Object array, int index, long value, int slIndex, TraceLine tl) {
+    public static  long changeArrayL(Object array, int index, long value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayL(slIndex, array, index, value, tl))) return value;	
@@ -556,8 +626,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized float changeArrayF(Object array, int index, float value, int slIndex, TraceLine tl) {
+    public static  float changeArrayF(Object array, int index, float value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayF(slIndex, array, index, value, tl))) return value;	
@@ -567,8 +641,12 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
-    public static synchronized double changeArrayD(Object array, int index, double value, int slIndex, TraceLine tl) {
+    public static  double changeArrayD(Object array, int index, double value, int slIndex, TraceLine tl) {
+synchronized (getClassLoaderLock(array)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || (tl == null) || recursiveEntry()) return value;
 	if (CHECK_PATTERN && (skip(CHGARRAY) || EventInterface.skipArrayD(slIndex, array, index, value, tl))) return value;	
@@ -578,12 +656,17 @@ public final class D {
 	shadow.add(slIndex, index, oValue, tl);
 	recursiveEntry = false;
 	return value;
+}}
     }
 
     // ******************************** VECTOR ********************************
 
     // Change vector element(s)
-    public static synchronized void vectorChange(int slIndex, Vector vector, int index, Object value) {
+    public static  void vectorChange(int slIndex, Vector vector, int index, Object value) {
+synchronized (getClassLoaderLock(vector)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE  || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
@@ -591,8 +674,13 @@ public final class D {
 	Shadow shadow = Shadow.get(vector, true);
 	shadow.vectorChange(slIndex, index, value);
 	recursiveEntry = false;
+}}}
     }
-    public static synchronized void vectorInsert(int slIndex, Vector vector, int index, Object value) {
+    public static  void vectorInsert(int slIndex, Vector vector, int index, Object value) {
+synchronized (getClassLoaderLock(vector)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
@@ -600,8 +688,12 @@ public final class D {
 	Shadow shadow = Shadow.get(vector, true);
 	shadow.vectorInsert(slIndex, index, value);
 	recursiveEntry = false;
+}}}
     }
-    public static synchronized void vectorRemove(int slIndex, Vector vector, int index, int range) {
+    public static  void vectorRemove(int slIndex, Vector vector, int index, int range) {
+synchronized (getClassLoaderLock(vector)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
@@ -609,12 +701,17 @@ public final class D {
 	Shadow shadow = Shadow.get(vector, true);
 	shadow.vectorRemove(slIndex, index, range);
 	recursiveEntry = false;
+}}
     }
 
     // ******************************** ARRAYLIST ********************************
 
     // Change ArrayList element
-    public static synchronized void arraylistChange(int slIndex, ArrayList arraylist, int index, Object value) {
+    public static  void arraylistChange(int slIndex, ArrayList arraylist, int index, Object value) {
+synchronized (getClassLoaderLock(arraylist)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();//        checkPAUSE(fileLine);
 	if (DISABLE || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
@@ -622,8 +719,13 @@ public final class D {
 	Shadow shadow = Shadow.get(arraylist, true);
 	shadow.vectorChange(slIndex, index, value);
 	recursiveEntry = false;
+}}}
     }
-    public static synchronized void arraylistInsert(int slIndex, ArrayList arraylist, int index, Object value) {
+    public static  void arraylistInsert(int slIndex, ArrayList arraylist, int index, Object value) {
+synchronized (getClassLoaderLock(arraylist)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();//        checkPAUSE(fileLine);
 	if (DISABLE || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
@@ -631,8 +733,12 @@ public final class D {
 	Shadow shadow = Shadow.get(arraylist, true);
 	shadow.vectorInsert(slIndex, index, value);
 	recursiveEntry = false;
+}}}
     }
-    public static synchronized void arraylistRemove(int slIndex, ArrayList arraylist, int index, int range) {
+    public static  void arraylistRemove(int slIndex, ArrayList arraylist, int index, int range) {
+synchronized (getClassLoaderLock(arraylist)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
@@ -640,11 +746,17 @@ public final class D {
 	Shadow shadow = Shadow.get(arraylist, true);
 	shadow.vectorRemove(slIndex, index, range);
 	recursiveEntry = false;
+}}
     }
 
     // ******************************** HASHTABLE ********************************
 
-    public static synchronized void hashtablePut(int slIndex, MyHashtable table, Object key, Object value) {
+    public static  void hashtablePut(int slIndex, MyHashtable table, Object key, Object value) {
+synchronized (getClassLoaderLock(table)) {
+synchronized (getClassLoaderLock(key)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
         if (DISABLE || recursiveEntry()) return;
         if (CHECK_PATTERN && CHECKING_START) return;
@@ -652,8 +764,13 @@ public final class D {
         Shadow shadow = Shadow.get(table);
         shadow.hashtablePut(slIndex, key, value);
         recursiveEntry = false;
+}}}}
     }
-    public static synchronized void hashtableRemove(int slIndex, MyHashtable table, Object key) {
+    public static  void hashtableRemove(int slIndex, MyHashtable table, Object key) {
+synchronized (getClassLoaderLock(table)) {
+synchronized (getClassLoaderLock(key)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
         if (DISABLE || recursiveEntry()) return;
         if (CHECK_PATTERN && CHECKING_START) return;
@@ -661,8 +778,12 @@ public final class D {
         Shadow shadow = Shadow.get(table);
         shadow.hashtableRemove(slIndex, key);
         recursiveEntry = false;
+}}}
     }
-    public static synchronized void hashtableClear(int slIndex, MyHashtable table) {
+    public static  void hashtableClear(int slIndex, MyHashtable table) {
+synchronized (getClassLoaderLock(table)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
         if (DISABLE || recursiveEntry()) return;
         if (CHECK_PATTERN && CHECKING_START) return;
@@ -670,11 +791,17 @@ public final class D {
         Shadow shadow = Shadow.get(table);
         shadow.hashtableClear(slIndex);
         recursiveEntry = false;
+}}
     }
 
     // ******************************** HASHMAP ********************************
 
-    public static synchronized void hashMapPut(int slIndex, MyHashMap table, Object key, Object value) {
+    public static  void hashMapPut(int slIndex, MyHashMap table, Object key, Object value) {
+synchronized (getClassLoaderLock(table)) {
+synchronized (getClassLoaderLock(key)) {
+synchronized (getClassLoaderLock(value)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
         if (DISABLE || recursiveEntry()) return;
         if (CHECK_PATTERN && CHECKING_START) return;
@@ -682,8 +809,13 @@ public final class D {
         Shadow shadow = Shadow.get(table);
         shadow.hashtablePut(slIndex, key, value);
         recursiveEntry = false;
+}}}}
     }
-    public static synchronized void hashMapRemove(int slIndex, MyHashMap table, Object key) {
+    public static  void hashMapRemove(int slIndex, MyHashMap table, Object key) {
+synchronized (getClassLoaderLock(table)) {
+synchronized (getClassLoaderLock(key)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
         if (DISABLE || recursiveEntry()) return;
         if (CHECK_PATTERN && CHECKING_START) return;
@@ -691,8 +823,12 @@ public final class D {
         Shadow shadow = Shadow.get(table);
         shadow.hashtableRemove(slIndex, key);
         recursiveEntry = false;
+}}}
     }
-    public static synchronized void hashMapClear(int slIndex, MyHashMap table) {
+    public static  void hashMapClear(int slIndex, MyHashMap table) {
+synchronized (getClassLoaderLock(table)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
         if (DISABLE || recursiveEntry()) return;
         if (CHECK_PATTERN && CHECKING_START) return;
@@ -700,6 +836,7 @@ public final class D {
         Shadow shadow = Shadow.get(table);
         shadow.hashtableClear(slIndex);
         recursiveEntry = false;
+}}
     }
 
 
@@ -707,6 +844,8 @@ public final class D {
     // ******************************** EXIT ********************************
 
     public static TraceLine exit(int slIndex, Object o, String meth, TraceLine tl, Object arg0) {
+        synchronized (getClassLoaderLock(o)) {
+        synchronized (getClassLoaderLock(arg0)) {
 	synchronized(D.class) {
 	    KILL_TARGET = true;					// Always kill on exit()
 	    if (PAUSE_PROGRAM) checkPAUSE();			// If already exited(?!)
@@ -716,6 +855,8 @@ public final class D {
 	    TraceLine tl1 = TraceLine.addTrace(slIndex, o, meth, tl, arg0);
 	    recursiveEntry = false;
 	}
+        }
+        }
 	try {Thread.sleep(2000);}		// A pretty safe bet, tho not 100% accurate.
 	catch (InterruptedException ie) {throw new DebuggerException("IMPOSSIBLE");}
 	Debugger.stopTarget();
@@ -724,7 +865,10 @@ public final class D {
 
     // ******************************** INVOKE FUNCTIONS 0 - 10 ARGUMENTS ********************************
     
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl) {	
+    public static  TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl) {	
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -733,9 +877,13 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 0, null, null, null, null, null, null, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
+}}
     }
 
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl, Object arg0) {
+    public static  TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl, Object arg0) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -744,10 +892,13 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 1, arg0, null, null, null, null, null, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
+}}
     }
 
-    public static synchronized TraceLine invoke(int slIndex, Object o,		
+    public static TraceLine invoke(int slIndex, Object o,		
 						String meth, TraceLine tl, Object arg0, Object arg1) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -756,10 +907,13 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 2, arg0, arg1, null, null, null, null, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
+}}
     }
 
-    public static synchronized TraceLine invoke(int slIndex, Object o,		
+    public static  TraceLine invoke(int slIndex, Object o,		
 						String meth, TraceLine tl, Object arg0, Object arg1, Object arg2) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -768,10 +922,13 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 3, arg0, arg1, arg2, null, null, null, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
+}}
     }
-    public static synchronized TraceLine invoke(int slIndex, Object o,		
+    public static  TraceLine invoke(int slIndex, Object o,		
 						String meth, TraceLine tl, Object arg0, Object arg1, Object arg2,
 						Object arg3) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -780,12 +937,15 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 4, arg0, arg1, arg2, arg3, null, null, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
+}}
     }
 
 
-    public static synchronized TraceLine invoke(int slIndex, Object o,		
+    public static  TraceLine invoke(int slIndex, Object o,		
 						String meth, TraceLine tl, Object arg0, Object arg1, Object arg2, 
 						Object arg3, Object arg4) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -794,11 +954,13 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 5, arg0, arg1, arg2, arg3, arg4, null, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
+    public static TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -807,10 +969,12 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 6, arg0, arg1, arg2, arg3, arg4, arg5, null, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
+}}    }
+    public static TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -819,10 +983,12 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 7, arg0, arg1, arg2, arg3, arg4, arg5, arg6, null, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
+}}    }
+    public static TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6, Object arg7) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -831,10 +997,12 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 8, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, null, null))) {}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
+}}    }
+    public static TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6, Object arg7, Object arg8) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -843,10 +1011,12 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 9, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, null))) {}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
+}}    }
+    public static TraceLine invoke(int slIndex, Object o, String meth, TraceLine tl,
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6, Object arg7, Object arg8, Object arg9) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -855,11 +1025,13 @@ public final class D {
 	if (CHECK_PATTERN && (skip(CALL) || EventInterface.skipCall(slIndex, o, meth, tl1, 10, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9))) {}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
     // ******************************** NEWOBJ FUNCTIONS 0 - 5 ARGUMENTS ********************************
 
-    public static synchronized void newArray(Object o, int slIndex) {	//  NOTE REVERSED ORDER! (so I can use DUP in byte code)
+    public static void newArray(Object o, int slIndex) {	//  NOTE REVERSED ORDER! (so I can use DUP in byte code)
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(NEW) || CHECKING_START)) return;
@@ -870,9 +1042,11 @@ public final class D {
 	else
 	    Shadow.createShadow(o, true);		// Useless??
 	recursiveEntry = false;
-    }
+}}    }
 
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl) {	
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl) {	
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -883,10 +1057,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -897,10 +1073,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -911,10 +1089,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -925,10 +1105,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+}}    }
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2,
 						Object arg3) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -939,12 +1121,14 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
 
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2, 
 						Object arg3, Object arg4) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -955,10 +1139,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+}}    }
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -969,10 +1155,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+}}    }
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -983,10 +1171,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+}}    }
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6, Object arg7) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -997,10 +1187,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+}}    }
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6, Object arg7, Object arg8) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -1011,10 +1203,12 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
-    public static synchronized TraceLine newObj(int slIndex, Object o, TraceLine tl,		
+}}    }
+    public static TraceLine newObj(int slIndex, Object o, TraceLine tl,		
 						Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 						Object arg5, Object arg6, Object arg7, Object arg8, Object arg9) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry() || (tl == null)) return null;
 	recursiveEntry=true;
@@ -1025,7 +1219,7 @@ public final class D {
 	}
 	recursiveEntry = false;
 	return tl1;
-    }
+}}    }
 
 
 
@@ -1034,7 +1228,10 @@ public final class D {
     // ******************************** RETURN ********************************
 
 
-    public static synchronized void returnValue(Object rv, TraceLine tl) {
+    public static  void returnValue(Object rv, TraceLine tl) {
+synchronized (getClassLoaderLock(rv)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE ||  (tl == null) || recursiveEntry()) return;
 	if (CHECKING_START) {tl.popInclusive();}
@@ -1042,6 +1239,7 @@ public final class D {
 	recursiveEntry=true;
 	ReturnLine.addReturnLine(rv, tl);
 	recursiveEntry = false;
+}}
     }
 
     public static boolean returnValueZ(boolean rv, TraceLine tl) {
@@ -1099,7 +1297,10 @@ public final class D {
 
 
 
-    public static synchronized void returnMarker(Object rv, int slIndex,  TraceLine tl) {
+    public static  void returnMarker(Object rv, int slIndex,  TraceLine tl) {
+synchronized (getClassLoaderLock(rv)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECKING_START && tl.isUnparented()) {tl.popInclusive();}
@@ -1108,7 +1309,7 @@ public final class D {
 	TimeStamp.addStamp(slIndex, TimeStamp.LAST, tl);
 	recursiveEntry = false;
 	if (tl.isUnparented() || (CHECKING_START)) returnValue(rv, tl);
-    }
+}}    }
 
     public static void returnMarker(int slIndex,  TraceLine tl) {
 	returnMarker(ShadowVoid.VOID, slIndex, tl);
@@ -1117,7 +1318,10 @@ public final class D {
 
     // ******************************** RETURN FROM NEW ********************************
 
-    public static synchronized void returnNew(Object rv, TraceLine tl) {
+    public static  void returnNew(Object rv, TraceLine tl) {
+synchronized (getClassLoaderLock(rv)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM)  checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECKING_START) {tl.popInclusive();}
@@ -1126,6 +1330,7 @@ public final class D {
 	ReturnLine.addReturnLine(rv, tl);
 	Shadow.createShadow(rv, true);
 	recursiveEntry = false;
+}}
     }
 
 
@@ -1185,16 +1390,22 @@ public final class D {
 
     
 
-    public static synchronized void throwEx(int slIndex, Object ex, TraceLine tl) {
+    public static void throwEx(int slIndex, Object ex, TraceLine tl) {
+synchronized (getClassLoaderLock(ex)) {
+synchronized (D.class) {
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && CHECKING_START) return;
 	recursiveEntry=true;
 	ThrowLine.addThrowLine(slIndex, (Throwable) ex, tl);
 	recursiveEntry = false;
+}}
     }
 
-    public static synchronized void catchEx(int slIndex, Object ex, TraceLine tl) {
+    public static  void catchEx(int slIndex, Object ex, TraceLine tl) {
+synchronized (getClassLoaderLock(ex)) {
+synchronized (D.class) {
+
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	recursiveEntry=true;
@@ -1205,87 +1416,110 @@ public final class D {
 	else
 	    CatchLine.addCatchLine(slIndex, (Throwable) ex, tl);
 	recursiveEntry = false;
-    }
+}}    }
 
 
 
     // ******************************** TRACK LOCKS ********************************
 
 
-    public static synchronized void gettingLock(int slIndex, Object obj, TraceLine tl) {
+    public static  void gettingLock(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipGettingLock(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	Locks.gettingLock(slIndex, obj, tl);
 	recursiveEntry = false;
-    }
+    }}}
 
 
 
-    public static synchronized void gotLock(int slIndex, Object obj, TraceLine tl) {
+    public static  void gotLock(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipGotLock(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	Locks.gotLock(slIndex, obj, tl);
 	recursiveEntry = false;
-    }
+    }}}
 
 
 
-    public static synchronized void releasingLock(int slIndex, Object obj, TraceLine tl) {
+    public static  void releasingLock(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipReleasingLock(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	Locks.releasingLock(slIndex, obj, tl);
 	recursiveEntry = false;
-    }
+    }}}
 
 
 
-    public static synchronized void startingWait(int slIndex, Object obj, TraceLine tl) {
+    public static  void startingWait(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipStartingWait(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	Locks.startingWait(slIndex, obj, tl);
 	recursiveEntry = false;
+}}
     }
 
 
 
-    public static synchronized void endingWait(int slIndex, Object obj, TraceLine tl) {
+    public static  void endingWait(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipEndingWait(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	Locks.endingWait(slIndex, obj, tl);
 	recursiveEntry = false;
-    }
+    }}}
 
 
 
-    public static synchronized void startingJoin(int slIndex, Object obj, TraceLine tl) {
+    public static  void startingJoin(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipStartingJoin(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	if (obj instanceof Thread) Locks.startingJoin(slIndex, (Thread)obj, tl);
 	recursiveEntry = false;
+}}
     }
 
 
 
-    public static synchronized void endingJoin(int slIndex, Object obj, TraceLine tl) {
+    public static  void endingJoin(int slIndex, Object obj, TraceLine tl) {
+synchronized (getClassLoaderLock(obj)) {
+synchronized (D.class) {
+
 	if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || (tl == null) || recursiveEntry()) return;
 	if (CHECK_PATTERN && (skip(LOCK) || EventInterface.skipEndingJoin(slIndex, obj, tl))) return;
 	recursiveEntry=true;
 	if (obj instanceof Thread) Locks.endingJoin(slIndex, (Thread)obj, tl);
 	recursiveEntry = false;
-    }
+    }}}
 
 
 
@@ -1311,9 +1545,11 @@ public final class D {
       }
     */
 
-    public static synchronized TraceLine addUnparented10(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static  TraceLine addUnparented10(int slIndex, Object o, String meth, String methodID, int nLocals,
 							 Object arg0, Object arg1,Object arg2, Object arg3, Object arg4,
 							 Object arg5, Object arg6, Object arg7, Object arg8, Object arg9) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1323,12 +1559,14 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented9(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static  TraceLine addUnparented9(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1,Object arg2, Object arg3, Object arg4,
 							Object arg5, Object arg6, Object arg7, Object arg8) {
-        if (PAUSE_PROGRAM) checkPAUSE();
+  synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+      if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
 	TraceLine tl = TraceLine.addUnparentedTrace(slIndex, o, meth, null, nLocals, 9,
@@ -1337,11 +1575,13 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}  }
 
-    public static synchronized TraceLine addUnparented8(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented8(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1,Object arg2, Object arg3, Object arg4,
 							Object arg5, Object arg6, Object arg7) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1351,11 +1591,13 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented7(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented7(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1, Object arg2, Object arg3, Object arg4,
 							Object arg5, Object arg6) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1365,11 +1607,13 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented6(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented6(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1,Object arg2, Object arg3, Object arg4,
 							Object arg5) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1379,11 +1623,13 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented5(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented5(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1,Object arg2, Object arg3, Object arg4) {
-        if (PAUSE_PROGRAM) checkPAUSE();
+  synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
+      if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
 	TraceLine tl = TraceLine.addUnparentedTrace(slIndex, o, meth, null, nLocals, 5,
@@ -1392,10 +1638,12 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}  }
 
-    public static synchronized TraceLine addUnparented4(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented4(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1,Object arg2, Object arg3) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1404,9 +1652,11 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
-    public static synchronized TraceLine addUnparented3(int slIndex, Object o, String meth, String methodID, int nLocals,
+}}    }
+    public static TraceLine addUnparented3(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1 ,Object arg2) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1415,10 +1665,12 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented2(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented2(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0, Object arg1) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 
@@ -1428,10 +1680,12 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented1(int slIndex, Object o, String meth, String methodID, int nLocals,
+    public static TraceLine addUnparented1(int slIndex, Object o, String meth, String methodID, int nLocals,
 							Object arg0) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1440,9 +1694,11 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
-    public static synchronized TraceLine addUnparented0(int slIndex, Object o, String meth, String methodID, int nLocals) {
+    public static TraceLine addUnparented0(int slIndex, Object o, String meth, String methodID, int nLocals) {
+synchronized (getClassLoaderLock(o)) {
+synchronized (D.class) {
         if (PAUSE_PROGRAM) checkPAUSE();
 	if (DISABLE || recursiveEntry()) return(null);
 	recursiveEntry=true;
@@ -1451,7 +1707,7 @@ public final class D {
 	recursiveEntry = false;
 	if (CHECK_PATTERN && (skip(ENTER) || EventInterface.skipEnter(slIndex, tl))) return tl;
 	return(tl);
-    }
+}}    }
 
 
     public static synchronized TraceLine getPreviousTL(int slIndex, String meth, String methodID, int nLocals) {
@@ -1533,4 +1789,17 @@ public final class D {
 	System.out.println("Total: " + total + "ms Average: "+avePerCall +"ns");
     }
 
+    private static Object getClassLoaderLock(Object o) {
+        return Debugger.classLoader;
+//        if (o != null) {
+//            ClassLoader cl = o.getClass().getClassLoader();
+//            if (cl != null && cl instanceof DebugifyingClassLoader) {
+//                return cl;
+//            } else {
+//                return new Object();
+//            }
+//        } else {
+//            return new Object();
+//        }
+    }
 }
