@@ -27,6 +27,8 @@ package com.lambda.Debugger;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URL;
+import java.util.jar.Manifest;
 
 import org.apache.bcel.Repository;
 import org.apache.bcel.classfile.ClassParser;
@@ -183,6 +185,23 @@ public class DebugifyingClassLoader extends java.lang.ClassLoader {
             Debugger.timeDebugifying += (end - start);
         }
         byte[] b = javaClass.getBytes();
+
+        int i = className.lastIndexOf('.');
+        if (i != -1) {
+            String pkgname = className.substring(0, i);
+            if (getPackage(pkgname) == null) {
+                definePackage(pkgname, null, null, null, null, null, null, null);
+            }
+        }
+//        int i = className.lastIndexOf('.');
+//        URL url = res.getCodeSourceURL();
+//        if (i != -1) {
+//            String pkgname = name.substring(0, i);
+//            // Check if package already loaded.
+//            Manifest man = res.getManifest();
+//            definePackageInternal(pkgname, man, url);
+//        }
+
         clazz = defineClass(className, b, 0, b.length);
         if (Debugger.TRACE_LOADER)
             println(spacesMinus() + "DebugifyingClassLoader loaded:      "

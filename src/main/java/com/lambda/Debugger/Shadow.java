@@ -1943,11 +1943,7 @@ private String createThreadPrintString() {
 
 	for (index = 0; index < size(); index++) {
 	    HistoryListHashtable hlh = (HistoryListHashtable)shadowVars[index]; // Cannot be null
-	    Object k = hlh.key;
-	    if (k == null) {
-		throw new DebuggerException("htput bug " + this);
-	    }
-	    if (key.equals(k)) {
+	    if (equals(key, hlh.key)) {
 		addToShadowVar(index, time, Dashes.DASHES);
 		return time;
 	    }
@@ -1970,11 +1966,7 @@ private String createThreadPrintString() {
 	int index;
 	for (index = 0; index < size(); index++) {
 	    HistoryListHashtable hlh = (HistoryListHashtable)shadowVars[index]; // Cannot be null
-	    Object k = hlh.key;
-	    if (k == null) {
-		throw new DebuggerException("htput bug " + this);
-	    }
-	    if (key.equals(k)) {
+	    if (equals(key, hlh.key)) {
 		addToShadowVar(index, time, value);
 		return time;
 	    }
@@ -2129,6 +2121,16 @@ private String createThreadPrintString() {
     }
 	
 
+    public static boolean equals(Object a, Object b) {
+        // I was gonna use Objects.equals, but that would restrict the library to Java 8
+        if (a == b) {
+            return true;
+        }
+        if (a == null) {
+            return false;
+        }
+        return a.equals(b);
+    }
 
     public static void printAll() {
 	System.out.println("\n=====================Shadow Objects=====================");

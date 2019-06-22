@@ -58,7 +58,7 @@ repositories {
 dependencies {
 	//TODO change as many of these as possible to Maven repositories	
 	// http://mvnrepository.com/artifact/org.apache.bcel/bcel
-	compile group: 'org.apache.bcel', name: 'bcel', version: '5.2'
+	compile group: 'org.apache.bcel', name: 'bcel', version: '6.2'
 
 }
 
